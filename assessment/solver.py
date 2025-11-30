@@ -7,7 +7,8 @@ from config import GRAPHQL_URL
 from assessment.queries import (GET_STATE_QUERY, SAVE_RESPONSES_QUERY, SUBMIT_DRAFT_QUERY,
                                 GRADING_STATUS_QUERY, INITIATE_ATTEMPT_QUERY, ABORT_ATTEMPT_QUERY)
 from loguru import logger
-from llm.connector import PerplexityConnector
+from llm.connector import PerplexityConnector, GeminiConnector
+from config import GEMINI_API_KEY
 
 
 class GradedSolver(object):
@@ -54,7 +55,13 @@ class GradedSolver(object):
 
                 else:
                     questions = self.retrieve_questions()
-                    connector = PerplexityConnector()
+                    # Prefer Gemini if a key is configured, otherwise use Perplexity
+                    if GEMINI_API_KEY:
+                        logger.info("Using Gemini connector for LLM responses")
+                        connector = GeminiConnector()
+                    else:
+                        logger.info("Using Perplexity connector for LLM responses")
+                        connector = PerplexityConnector()
                     answers = connector.get_response(questions)
                     
                     if answers is None:

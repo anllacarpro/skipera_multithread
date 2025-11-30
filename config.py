@@ -14,17 +14,17 @@ HEADERS = {
 }
 
 COOKIES = {
-    'CAUTH': 'hbEIO3iPdNXTmnu3oadqOUMYF2LkCtdXTc0nokXej5nwF4wLeVv1xA-HrKw6vWcaSZtWCqwkgngox0qbpd4jkQ.VQT0W2snZIMKVwbiqE3EqA.3JfxfL_TcbZhEL8oDb_Yzs4OKicTVRlKVyDlGLqriQ9v9wueEy2nYexj3wm2nTD193WlJ2xIRLIHcywbHVxDYifH07IoWr2Plak9FT6-YjViXMN3XjQELfgw-0C8TDXqRWq_61FZoAsc8A34beQjCCpSD32xoogfgm4DzF9Cx63G9KAE9NEAquFbpI8HxDmthzNQgSLtldzcTjaiV7Snp-rQs_U8jR0GOGianl4uRXOrAm5STcASmmIJ8JDvlOYbo0e7IAZF3TwFQ8v4apDQhAxEGxnmBluBwZbdV6EDdpB8QRPvIwhgtEzOyOpQsEDyh_QGCaeR3cd8_a26ukWJBrrKZnHmro-u6Ndsjg2pONSoQh4fplh_bT2jkX434_f1B7lyc2d3x8UiDtwEddHM5MiM8rZf80gLCjPo_L3iOjDjHVHi1ycq3tSY0LM9iA9ZwBoPWK0Fzs7M6Kx4Yj61VuvKSKFOBecG9UTTk_OS6xs',
-    '__204u': '7480175440-1742254135515',
-    '__204v': 'a45752f7-ed9b-4f7a-8ece-698f1a0c2c56',
-    '__400vt': '1764335592693',
-    '_ga': 'GA1.1.839943232.1764305536',
-    '_ga_7GZ59JSFWQ': 'GS2.1.s1764335504$o2$g1$t1764335525$j39$l0$h1846662229',
-    'FPID': 'FPID2.2.eH1jFOr%2FEAvF6pZNR1iJwx98rBPyEA7spRsrkGKXjfI%3D.1764305536',
-    'FPLC': 'kWgaBZf75mOH0imIVX2QuO2pEFCtBINBOaAlHLXkFT6hsMv89zC8Sg0r5GLRV6fX0AsMjujVGlBqaa7zW5sbuIw1gJmIgtx2IqL2J%2BJI6OSH75c1fTUmXO2CMKkb1A%3D%3D',
-    'CSRF3-Token' : '1765169506.kdwojv4fvm0Mn0cs',
+    'CAUTH': "wncf886clXvk3fBns-CIN1Ye6V7JIlzefEY_RriLWvRrT-vajhu3WS_0FT-CdwO6hBJ86TrrMP8DRYaO-6heEQ.gRW_sBVmel30Hcmd1uCpXA.oYnC3eFb-IGSCYjq5YTzRPHdBrebNFEk-Ha3dThvSBB8vysOR4KHt-t0OW1v_FnrlhtbWdALRUprps2lwe5onfU41oAIP1VHSsm-ltCp69icm1OB5w1F_AsrFVHOpqY_oUolRSLgVeIOmwxFaWjP8FevdWtVTPNNNT24aF83DkRMSWzZLyD9EILbMgGyigUAFt3yoJ8pyG7Bh3nY33FhTxPxIob3Cv9kce1l5-tO_kGJwQ0SPnTcVxOIrEf0u5zRH8wOBF4FgFoT7SMO_GB7e9dFgHPf0l1-uTIh2we_VdKOY1vsD45YbaLIEif4Gpqggh1NhRokcavBBflWKcqlrsdYlOu7TZD0pfrI8s9LAD5IQ3yypxiQ8myxaOdxBdu0CMACh_0AbFSHfeVZWJEcKe-B8KW1D4Gjgg9qt_HHWRP9n1qGYxyaocSX6Igo-AM6_QaP_0iBvTdXimBT6TgveDGAGjr-0W3XoUviZR1vXUxJ4fRdfGt-4T0S_CvS26Kp",
+    '__204u': '5649102421-1763657736189',
+    '__400v': 'a4f11185-2651-4b55-8b65-724f96960eda',
+    '__204v': '6bd0c5fa-88ea-41b3-865e-de6346524126',
+    '__400vt': '1764513222280',
+    '_ga': 'GA1.1.1893998923.1763657743',
+    '_ga_7GZ59JSFWQ': 'GS2.1.s1764513210$o10$g0$t1764513210$j60$l0$h319423629',
+    'FPID': "FPID2.2.ht7Gooh4bgfTjjE02OgcJHg267MgRMaPkdWoWShoQUw%3D.1742240447",
+    'FPLC': "zxfz2hJUnUcvhSlAVmUnPWz4jfLwZ%2BxDOyJh%2B9DxdM5AlX3HOk%2FZ0I6via2i2POmAOn%2B8EegO2ZTwx2SGVqhHgLYIu1W%2FhAvW1ywEDO%2BnMPwnSafHKfpfNzjRpwjug%3D%3D",
+    'CSRF3-Token' : '1765213458.gaXd1A2NEY4Rku17',
 }
-
 # Credentials
 import os
 
@@ -35,4 +35,12 @@ import os
 # PowerShell:
 #   $env:PERPLEXITY_API_KEY = 'your_key_here'
 #
-PERPLEXITY_API_KEY = os.getenv("PERPLEXITY_API_KEY")
+#PERPLEXITY_API_KEY = os.getenv("PERPLEXITY_API_KEY")
+# Gemini (Google) settings - optional. If you set `GEMINI_API_KEY`, the
+# solver will prefer Gemini for answering quizzes.
+# PowerShell:
+#   $env:GEMINI_API_KEY = 'your_gemini_api_key'
+#   $env:GEMINI_MODEL = 'gemini-1.5'  # optional
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-1.5")
+GEMINI_API_URL = os.getenv("GEMINI_API_URL", "https://generativelanguage.googleapis.com/v1beta2/models")
