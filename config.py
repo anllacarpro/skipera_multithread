@@ -13,9 +13,7 @@ HEADERS = {
     'x-requested-with': 'XMLHttpRequest',
 }
 
-COOKIES = {
-
-}
+COOKIES = {}
 
 # Credentials
 PERPLEXITY_API_KEY = "REDACTED"
