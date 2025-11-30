@@ -2,6 +2,7 @@
 import click
 import requests
 import config
+import os
 from loguru import logger
 from assessment.solver import GradedSolver
 from watcher.watch import Watcher
@@ -27,7 +28,51 @@ class Skipera(object):
             self.login()
 
     def login(self):
-        raise NotImplementedError()  # implementation pending
+        """Attempt to authenticate using cookies.
+
+        This project originally relied on pre-set cookies. If `get_userid`
+        fails we try the following, in order:
+        - Use `COURSES_CAUTH` and `COURSES_CSRF3_TOKEN` environment variables
+        - Use `config.COOKIES` values if present
+        - Prompt interactively for `CAUTH` and `CSRF3-Token` cookie values
+
+        The function will exit the program if authentication cannot be
+        established. This avoids hardcoding credentials in the repository.
+        """
+        # 1) Try environment variables
+        cauth = os.getenv("COURSES_CAUTH")
+        csrf = os.getenv("COURSES_CSRF3_TOKEN")
+
+        # 2) Fall back to values from config.COOKIES (already loaded)
+        if not cauth:
+            cauth = config.COOKIES.get("CAUTH")
+        if not csrf:
+            csrf = config.COOKIES.get("CSRF3-Token")
+
+        if cauth and csrf:
+            self.session.cookies.update({"CAUTH": cauth, "CSRF3-Token": csrf})
+            if self.get_userid():
+                logger.info("Authenticated using provided cookies")
+                return
+
+        # 3) Interactive prompt fallback
+        logger.info("Authentication required. You can provide cookie values interactively or set env vars `COURSES_CAUTH` and `COURSES_CSRF3_TOKEN`.")
+        try:
+            cauth_input = input("Enter CAUTH cookie value (leave blank to abort): ").strip()
+            csrf_input = input("Enter CSRF3-Token cookie value (leave blank to abort): ").strip()
+        except Exception:
+            logger.error("Interactive input failed; aborting login.")
+            raise SystemExit(1)
+
+        if not cauth_input or not csrf_input:
+            logger.error("No cookies provided; cannot authenticate.")
+            raise SystemExit(1)
+
+        self.session.cookies.update({"CAUTH": cauth_input, "CSRF3-Token": csrf_input})
+        if not self.get_userid():
+            logger.error("Login failed with provided cookies.")
+            raise SystemExit(1)
+        logger.info("Authenticated using interactive cookies")
 
     def get_userid(self) -> bool:
         r = self.session.get(self.base_url + "adminUserPermissions.v1?q=my").json()
